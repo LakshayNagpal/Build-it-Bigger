@@ -34,6 +34,6 @@ dependencies {
     compile project(":jokedisplay")
     compile project(":jokesource")
     compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.google.android.gms:play-services:9.2.0'
+    freeCompile 'com.google.android.gms:play-services:9.2.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
