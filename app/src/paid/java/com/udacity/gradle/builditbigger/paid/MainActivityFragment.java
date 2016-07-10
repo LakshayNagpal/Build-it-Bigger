@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.android.jokedisplay.JokeActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
 import com.udacity.gradle.builditbigger.OnJokeReceivedListener;
 import com.udacity.gradle.builditbigger.R;
@@ -38,8 +36,7 @@ public class MainActivityFragment extends Fragment implements OnJokeReceivedList
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EndpointsAsyncTask e = new EndpointsAsyncTask();
-                e.execute();
+                fetchJoke();
             }
         });
         return root;
@@ -50,5 +47,9 @@ public class MainActivityFragment extends Fragment implements OnJokeReceivedList
         Intent intent = new Intent(getActivity(), JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
         startActivity(intent);
+    }
+
+    public void fetchJoke(){
+        new EndpointsAsyncTask().execute(this);
     }
 }
